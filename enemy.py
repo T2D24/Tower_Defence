@@ -21,8 +21,8 @@ class Enemy(pygame.sprite.Sprite):
         self.dead()
         self.moving()
 
-    def moving(self):
-        for dot in self.path:
+    def moving(self):       # переписать этот метод, а то это полное говно
+        '''for dot in self.path:
             while True:
                 if self.rect.x < dot[0]:
                     self.rect.x += self.vel_x
@@ -32,17 +32,25 @@ class Enemy(pygame.sprite.Sprite):
                     self.rect.y -= self.vel_y
                 elif self.rect.y < dot[1]:
                     self.rect.y += self.vel_y
+                    '''
+        if self.rect.y > 0:
+            self.rect.y -= self.vel_y
 
-                if (self.rect.x >= dot[0] and self.rect.y >= dot[1]) or (
-                        self.rect.x >= dot[0] and self.rect.y <= dot[1]) or (
-                        self.rect.x <= dot[0] and self.rect.y >= dot[1]) or (
-                        self.rect.x <= dot[0] and self.rect.y <= dot[1]):
-                    break
+        if self.rect.y <= 0:
+            self.rect.y = 0
 
+        if self.rect.y == 0 and self.rect.x < 800:
+            self.rect.x += self.vel_x
 
+        if self.rect.right >= 800:
+            self.rect.right = 800
 
-            else:
-                exit()
+        if self.rect.y <= 600 and self.rect.right == 800:
+            self.rect.top += 2 * self.vel_y
+            print(1)
+
+        if self.rect.bottom >= 600:
+            exit()
 
     def dead(self):
         if self.hp <= 0:
