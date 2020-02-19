@@ -1,4 +1,5 @@
 import pygame
+from time import time
 from pygame.locals import *
 from config import *
 from enemy import *
@@ -17,37 +18,118 @@ class Game(object):
         self.background = pygame.transform.scale(self.background, WIN_SIZE)
         self.ms = 0
         self.towers = pygame.sprite.Group()
-        self.enemys = pygame.sprite.Group()
+        self.enemies = pygame.sprite.Group()
         newEnemy = Enemy(0, 500, enemy)
-        newEnemy.add(self.enemys)
+        newEnemy.add(self.enemies)
         self.bullets = pygame.sprite.Group()
-        self.hp = 20
+        self.coins = 0
+        self.buttons = pygame.sprite.Group()
+        self.lives = 20
+        self.spawn_time = 0
+        self.myfont = pygame.font.SysFont('arial', 33)
 
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
         x = 100
         y = 100
         for i in range(2):
-            newTower = Tower(x, y, tower)
-            self.towers.add(newTower)
+            self.towers.add(Tower(x, y, tower))
             x += 500
+
+        for block in self.towers:
+            self.buttons.add(block.button)
+
+    def create_mobs(self, ms):
+        self.spawn_time += ms
+        if self.spawn_time > SPAWN_RATE:
+            self.enemies.add(Enemy(0, 500, enemy))
+            self.spawn_time = 0
+
 
     def render(self):
         self.display.blit(self.background, (0, 0))
         self.towers.draw(self.display)
-        self.enemys.draw(self.display)
+        self.enemies.draw(self.display)
+        self.buttons.draw(self.display)
         self.bullets.draw(self.display)
+        lives = self.myfont.render("Lives: " + str(self.lives), False, (0, 0, 0))
+        coins = self.myfont.render("Coins: " + str(self.coins), False, (0, 0, 0))
+        self.display.blit(lives, (WIN_SIZE[0] // 2.5, WIN_SIZE[1] * 0.8))
+        self.display.blit(coins, (WIN_SIZE[0] // 2.5, WIN_SIZE[1] * 0.85))
+        if self.lives <= 0:
+            self.draw_death_screen()
         pygame.display.update()
 
     def events(self):
+        pos = pygame.mouse.get_pos()
         for event in pygame.event.get():
             if event.type == QUIT:
                 self.running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.running = False
+            if event.type == pygame.MOUSEBUTTONUP:
+                for tower in self.towers:
+                    for button in self.buttons:
+                        if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom and self.coins >= tower.upgrade_cost:
+                            self.coins -= tower.upgrade_cost
+                            button.clicked()
+
+    def menu_get_events(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.menu_running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    self.menu_running = False
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_p:
+                    self.running = True
+                    self.run()
+
+    def draw_death_screen(self):
+        self.display.fill((0, 0, 0))
+        myfont = pygame.font.SysFont('arial', 55)
+        dead_text = myfont.render('YOU LOSE', False, (255, 0, 0))
+        self.display.blit(dead_text, (WIN_SIZE[0] // 2.5, WIN_SIZE[1] // 2.5))
+
+    def menu_draw(self):
+        self.display.blit(self.background, (0, 0))
+        play_text = self.myfont.render('Press P to play', False, (0, 0, 0))
+        exit_text = self.myfont.render('Press ESC to exit', False, (0, 0, 0))
+        self.display.blit(play_text, (WIN_SIZE[0] // 25, WIN_SIZE[1] // 10))
+        self.display.blit(exit_text, (WIN_SIZE[0] // 25, WIN_SIZE[1] // 6))
+        pygame.display.update()
+
+    def menu(self):
+        self.menu_running = True
+        while self.menu_running:
+            self.menu_get_events()
+            self.menu_draw()
 
     def update(self):
         ms = self.clock.tick(FPS)
-        self.enemys.update()
-        self.towers.update(self.enemys, self.bullets, ms)
+        for block in self.enemies:
+            if block.dead() == (1, None):
+                self.coins += block.reward
+            if block.moving() == (1, None):
+                self.lives -= block.dmg
+        for button in self.buttons:
+            for tower in self.towers:
+                if self.coins < tower.upgrade_cost:
+                    button.image = pygame.image.load(cupgrade)
+                    button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
+                else:
+                    button.image = pygame.image.load(upgrade)
+                    button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
+
+        self.towers.update(self.enemies, self.bullets, ms)
         self.bullets.update()
+        self.create_mobs(ms)
+
+
+
+
+        # print(self.coins)
 
     def run(self):
         self.creating_towers()
@@ -58,4 +140,4 @@ class Game(object):
 
 
 if __name__ == '__main__':
-    Game().run()
+    Game().menu()
