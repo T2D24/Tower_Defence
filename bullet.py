@@ -9,15 +9,15 @@ class Bullet(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(self.image, SIZE)
         self.image.convert_alpha()
         self.rect = self.image.get_rect()
-        self.rect.x = spawn.rect.x
-        self.rect.y = spawn.rect.y
-        self.speed = 10
+        self.rect.x, self.rect.y = spawn[0], spawn[1]
+        self.mask = pygame.mask.from_surface(self.image)
+        self.speed = 5
         self.enemy = enemy
         self.spawn = spawn
 
     def aim(self):  # функиця расчета полета пули
-        x = self.enemy.rect.x - self.spawn.rect.x
-        y = self.enemy.rect.y - self.spawn.rect.y
+        x = self.enemy.rect.centerx - 18 - self.rect.x
+        y = self.enemy.rect.centery - 18 - self.rect.y
         if x == 0 and y == 0:
             self.kill()
         k = pow((x * x + y * y), 0.5) / self.speed
@@ -31,8 +31,7 @@ class Bullet(pygame.sprite.Sprite):
         self.hitting()
 
     def hitting(self):
-        if pygame.sprite.collide_rect(self, self.enemy):
+        if pygame.sprite.spritecollide(self, [self.enemy], False, pygame.sprite.collide_mask):
             self.enemy.hp -= 4
-            print(self.enemy.hp)
             self.kill()
 

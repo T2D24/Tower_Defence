@@ -20,6 +20,7 @@ class Tower(pygame.sprite.Sprite):
 
         self.ms += ms
         if enemies and self.ms > 2000: 
-            newBullet = Bullet(bulletImg, self, enemies[0])
+            print(self.rect.topleft)
+            newBullet = Bullet(bulletImg, self.rect.topleft, enemies[0])# осмысленый выбор врага
             newBullet.add(bullets)
             self.ms = 0
