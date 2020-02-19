@@ -3,17 +3,17 @@ from config import *
 
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, image, spawn, enemy):
+    def __init__(self, image, spawn, enemy, dmg):
         super(Bullet, self).__init__()
         self.image = pygame.image.load(image)
         self.image = pygame.transform.scale(self.image, SIZE)
         self.image.convert_alpha()
         self.rect = self.image.get_rect()
-        self.rect.x = spawn.rect.x
-        self.rect.y = spawn.rect.y
+        self.rect.x, self.rect.y = spawn
         self.speed = 10
         self.enemy = enemy
         self.spawn = spawn
+        self.dmg = dmg
 
     def aim(self):  # функиця расчета полета пули
         x = self.enemy.rect.x - self.spawn.rect.x
@@ -21,7 +21,7 @@ class Bullet(pygame.sprite.Sprite):
         if x == 0 and y == 0:
             self.kill()
         k = pow((x * x + y * y), 0.5) / self.speed
-        self.nx = x / k
+        self.nx = x / k  # локальные nx и ny
         self.ny = y / k
 
     def update(self):
@@ -32,7 +32,6 @@ class Bullet(pygame.sprite.Sprite):
 
     def hitting(self):
         if pygame.sprite.collide_rect(self, self.enemy):
-            self.enemy.hp -= 4
-            print(self.enemy.hp)
+            self.enemy.hp -= self.dmg
             self.kill()
 
