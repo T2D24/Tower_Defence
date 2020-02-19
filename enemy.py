@@ -1,4 +1,5 @@
 import pygame
+import random
 from config import *
 from levels import *
 
@@ -12,10 +13,12 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.hp = 30
+        self.hp = 10 + random.randint(-7, 10)
         self.vel_x = 3
         self.path = level1
         self.vel_y = 3
+        self.reward = 2 + random.randint(-1, 3)
+        self.dmg = 3 + random.randint(1, 3)
 
     def update(self):
         self.dead()
@@ -47,11 +50,11 @@ class Enemy(pygame.sprite.Sprite):
 
         if self.rect.y <= 600 and self.rect.right == 800:
             self.rect.top += 2 * self.vel_y
-            print(1)
 
         if self.rect.bottom >= 600:
-            exit()
+            self.dead()
 
     def dead(self):
-        if self.hp <= 0:
-            self.kill()
+        if self.hp <= 0 or self.rect.bottom >= 600:
+            return 1, self.kill()
+
