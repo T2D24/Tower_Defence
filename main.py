@@ -25,6 +25,7 @@ class Game(object):
         self.coins = 2300
         self.buttons = pygame.sprite.Group()
         self.lives = 20
+        self.show_shop = False
         self.spawn_time = 0
         self.myfont = pygame.font.SysFont('arial', 33)
 
@@ -44,6 +45,12 @@ class Game(object):
             self.enemies.add(Enemy(0, 500))
             self.spawn_time = 0
 
+    def render_cost(self):
+        for button in self.buttons:
+            button.draw_cost(self.display)
+
+    def draw_shop(self):
+        pass
 
     def render(self):
         self.display.blit(self.background, (0, 0))
@@ -55,6 +62,13 @@ class Game(object):
         coins = self.myfont.render("Coins: " + str(self.coins), False, (0, 0, 0))
         self.display.blit(lives, (WIN_SIZE[0] // 2.5, WIN_SIZE[1] * 0.8))
         self.display.blit(coins, (WIN_SIZE[0] // 2.5, WIN_SIZE[1] * 0.85))
+        self.render_cost()
+        self.draw_t_radius()
+        if self.show_shop:
+            pygame.draw.polygon(self.display, (255, 255, 255),
+                                [(0, 3 * WIN_SIZE[1] // 4), (0, WIN_SIZE[1]), (WIN_SIZE[0], WIN_SIZE[1]),
+                                 (WIN_SIZE[0], 3 * WIN_SIZE[1] // 4)
+                                 ])
         if self.lives <= 0:
             self.draw_death_screen()
         pygame.display.update()
@@ -67,12 +81,17 @@ class Game(object):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
+                if event.key == pygame.K_b:
+                    self.show_shop = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 for button in self.buttons:
-                    if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom and self.coins >= button.tower.upgrade_cost:
+                    if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom\
+                            and self.coins >= button.tower.upgrade_cost:
                         self.coins -= button.tower.upgrade_cost
                         button.clicked()
                         print(button.tower.upgrade_cost)
+        if pygame.key.get_pressed()[pygame.K_b] and self.show_shop:
+            self.show_shop = False
 
     # def menu_get_events(self):
     #     for event in pygame.event.get():
@@ -106,6 +125,10 @@ class Game(object):
             self.menu_get_events()
             self.menu_draw()
 
+    def draw_t_radius(self):
+        for tower in self.towers:
+            tower.draw_circle(self.display)
+
     def update(self):
         ms = self.clock.tick(FPS)
         for block in self.enemies:
@@ -122,13 +145,10 @@ class Game(object):
                 button.image = pygame.image.load(upgrade)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
 
-        self.towers.update(self.enemies, self.bullets, ms)
         self.enemies.update()
+        self.towers.update(self.enemies, self.bullets, ms, self.display)
         self.bullets.update()
         self.create_mobs(ms)
-
-
-
 
         # print(self.coins)
 
