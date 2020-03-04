@@ -2,48 +2,36 @@ import pygame
 import random
 from config import *
 from levels import *
+from animation import Animation
 
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self, x, y, image):
+    def __init__(self, x, y):
         super(Enemy, self).__init__()
-        self.pic = pygame.image.load(image)
-        self.pic = pygame.transform.scale(self.pic, (SIZE[0], SIZE[1]))
-        self.pic.convert_alpha()
-        self.image = pygame.Surface((SIZE[0], SIZE[1] + 18), 
-                            pygame.SRCALPHA | pygame.HWSURFACE)
-        self.image.blit(self.pic, (0, 18))
-        self.image.convert_alpha()
-        self.mask = pygame.mask.from_surface(self.image)
-        self.rect = self.pic.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.anim = Animation(ENEMY_1_WALK, x, y)
+        self.image = self.anim.image
+        self.rect = self.anim.rect
         self.hp = 10 + random.randint(-7, 10)
-        self.vel_x = 3
+        self.vel_x = 1
         self.path = level1
-        self.vel_y = 3
+        self.vel_y = 1
         self.reward = 2 + random.randint(-1, 3)
         self.dmg = 3 + random.randint(1, 3)
         self.hp_fix = self.hp
 
+    def maskMake(self):
+        self.mask = pygame.mask.from_surface(self.image)
+
     def update(self):
+        self.anim.update()
+        self.image = self.anim.image
+        self.maskMake()
         self.dead()
         self.moving()
         self.health_bar()
         # print(self.rect.x, " ", self.rect.y)
         
-    def moving(self):       # переписать этот метод, а то это полное говно
-        '''for dot in self.path:
-            while True:
-                if self.rect.x < dot[0]:
-                    self.rect.x += self.vel_x
-                elif self.rect.x > dot[0]:
-                    self.rect.x -= self.vel_x
-                if self.rect.y > dot[1]:
-                    self.rect.y -= self.vel_y
-                elif self.rect.y < dot[1]:
-                    self.rect.y += self.vel_y
-                    '''
+    def moving(self):       # переписать этот метод, а то это полное говно РУСТАМ ПЛЕЗ МЕН ДУ ИТ ПИДАРАС ЕБАНЫЙ СДЕЛАЙ ХОТЬ ЧТО НИБУДЬ УРОД!!!!
         if self.rect.y > 0:
             self.rect.y -= self.vel_y
 

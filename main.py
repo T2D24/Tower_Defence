@@ -19,7 +19,7 @@ class Game(object):
         self.ms = 0
         self.towers = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
-        newEnemy = Enemy(0, 500, enemy)
+        newEnemy = Enemy(0, 500)
         newEnemy.add(self.enemies)
         self.bullets = pygame.sprite.Group()
         self.coins = 2300
@@ -41,7 +41,7 @@ class Game(object):
     def create_mobs(self, ms):
         self.spawn_time += ms
         if self.spawn_time > SPAWN_RATE:
-            self.enemies.add(Enemy(0, 500, enemy))
+            self.enemies.add(Enemy(0, 500))
             self.spawn_time = 0
 
 
@@ -123,6 +123,7 @@ class Game(object):
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
 
         self.towers.update(self.enemies, self.bullets, ms)
+        self.enemies.update()
         self.bullets.update()
         self.create_mobs(ms)
 

@@ -1,7 +1,7 @@
 import os
 
-WIN_SIZE = (800, 600)
-SIZE = (32, 32)
+WIN_SIZE = (1200, 900)
+SIZE = (64, 64)
 FPS = 30
 BUTTON_SIZE = (26, 25)
 
@@ -14,3 +14,27 @@ BG = os.path.join(assets, 'bg.png')
 upgrade = os.path.join(assets, 'upgrade.png')
 cupgrade = os.path.join(assets, 'cupgrade.png')
 bulletImg = os.path.join(assets, 'enemy.png')
+
+enemies = os.path.join(assets, 'enemies_walk')
+enemy_1 = os.path.join(enemies, 'enemy_1')
+
+ENEMY_1_WALK = [enemy_1 + '\9_enemies_1_walk_000.png', 
+                enemy_1 + '\9_enemies_1_walk_001.png', 
+                enemy_1 + '\9_enemies_1_walk_002.png', 
+                enemy_1 + '\9_enemies_1_walk_003.png', 
+                enemy_1 + '\9_enemies_1_walk_004.png', 
+                enemy_1 + '\9_enemies_1_walk_005.png', 
+                enemy_1 + '\9_enemies_1_walk_006.png', 
+                enemy_1 + '\9_enemies_1_walk_007.png', 
+                enemy_1 + '\9_enemies_1_walk_008.png', 
+                enemy_1 + '\9_enemies_1_walk_009.png', 
+                enemy_1 + '\9_enemies_1_walk_010.png', 
+                enemy_1 + '\9_enemies_1_walk_011.png', 
+                enemy_1 + '\9_enemies_1_walk_012.png', 
+                enemy_1 + '\9_enemies_1_walk_013.png', 
+                enemy_1 + '\9_enemies_1_walk_014.png', 
+                enemy_1 + '\9_enemies_1_walk_015.png', 
+                enemy_1 + '\9_enemies_1_walk_016.png',
+                enemy_1 + '\9_enemies_1_walk_017.png',
+                enemy_1 + '\9_enemies_1_walk_018.png',
+                enemy_1 + '\9_enemies_1_walk_019.png',]
