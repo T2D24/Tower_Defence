@@ -22,6 +22,8 @@ class Bullet(pygame.sprite.Sprite):
         if x == 0 and y == 0:
             self.kill()
         k = pow((x * x + y * y), 0.5) / self.speed
+        if not k: 
+            k = 1
         self.nx = x / k  # локальные nx и ny
         self.ny = y / k
 
