@@ -11,10 +11,20 @@ class Button(pygame.sprite.Sprite):
         self.tower = tower
         self.rect.x = self.tower.rect.left
         self.rect.y = self.tower.rect.bottom
+        self.myfont = pygame.font.SysFont('arial', 18)
 
     def clicked(self):
         self.tower.dmg += 2
-        self.tower.upgrade_cost += 5
+        self.tower.upgrade_cost += 100
+        self.tower.level += 1
+
+    def get_cost(self):
+        return self.tower.upgrade_cost
+
+
+    def draw_cost(self):
+        pass
+
 
 
 

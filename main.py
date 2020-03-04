@@ -22,7 +22,7 @@ class Game(object):
         newEnemy = Enemy(0, 500, enemy)
         newEnemy.add(self.enemies)
         self.bullets = pygame.sprite.Group()
-        self.coins = 0
+        self.coins = 2300
         self.buttons = pygame.sprite.Group()
         self.lives = 20
         self.spawn_time = 0
@@ -67,24 +67,24 @@ class Game(object):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
-            if event.type == pygame.MOUSEBUTTONUP:
-                for tower in self.towers:
-                    for button in self.buttons:
-                        if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom and self.coins >= tower.upgrade_cost:
-                            self.coins -= tower.upgrade_cost
-                            button.clicked()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                for button in self.buttons:
+                    if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom and self.coins >= button.tower.upgrade_cost:
+                        self.coins -= button.tower.upgrade_cost
+                        button.clicked()
+                        print(button.tower.upgrade_cost)
 
-    def menu_get_events(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.menu_running = False
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    self.menu_running = False
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_p:
-                    self.running = True
-                    self.run()
+    # def menu_get_events(self):
+    #     for event in pygame.event.get():
+    #         if event.type == pygame.QUIT:
+    #             self.menu_running = False
+    #         if event.type == pygame.KEYDOWN:
+    #             if event.key == pygame.K_ESCAPE:
+    #                 self.menu_running = False
+    #         if event.type == pygame.KEYUP:
+    #             if event.key == pygame.K_p:
+    #                 self.running = True
+    #                 self.run()
 
     def draw_death_screen(self):
         self.display.fill((0, 0, 0))
@@ -109,18 +109,18 @@ class Game(object):
     def update(self):
         ms = self.clock.tick(FPS)
         for block in self.enemies:
+            block.health_bar()
             if block.dead() == (1, None):
                 self.coins += block.reward
             if block.moving() == (1, None):
                 self.lives -= block.dmg
         for button in self.buttons:
-            for tower in self.towers:
-                if self.coins < tower.upgrade_cost:
-                    button.image = pygame.image.load(cupgrade)
-                    button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
-                else:
-                    button.image = pygame.image.load(upgrade)
-                    button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
+            if self.coins < button.tower.upgrade_cost:
+                button.image = pygame.image.load(cupgrade)
+                button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
+            else:
+                button.image = pygame.image.load(upgrade)
+                button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
 
         self.towers.update(self.enemies, self.bullets, ms)
         self.bullets.update()
@@ -140,4 +140,4 @@ class Game(object):
 
 
 if __name__ == '__main__':
-    Game().menu()
+    Game().run()
