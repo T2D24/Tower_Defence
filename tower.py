@@ -1,7 +1,8 @@
-import pygame 
+import pygame
 from config import *
 from bullet import *
 from button import *
+
 
 class Tower(pygame.sprite.Sprite):
     def __init__(self, x, y, image):
@@ -13,23 +14,34 @@ class Tower(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         self.level = 1
-        self.upgrade_cost = 700
+        self.upgrade_cost = 12
         self.radius = 150
         self.ms = 0
         self.fire_rate = 2000
         self.dmg = 4
         self.button = Button(self)
+        self.clicked = False
 
-    def update(self, enemies, bullets, ms):
+    def update(self, enemies, bullets, ms, display):
         enemies = pygame.sprite.spritecollide(self, enemies, False,
-                        collided = pygame.sprite.collide_circle_ratio(1))
+                                              collided=pygame.sprite.collide_circle_ratio(1))
         self.ms += ms
-        if enemies and self.ms > self.fire_rate:                                            # 2000 нужно будет в отдельную переменную которая отвечает за скорострельность
-            newBullet = Bullet(bulletImg, self.rect.topleft, enemies[0], self.dmg)             # картинки нужно будет разные выдавать
-            newBullet.add(bullets)                                                # нужно передавать topleft а не self
+        if enemies and self.ms > self.fire_rate:
+            newBullet = Bullet(bulletImg, self.rect.topleft, enemies[0], self.dmg)
+            newBullet.add(bullets)
             self.ms = 0
+        self.check_radius()
+
+    def check_radius(self):
+        pos = pygame.mouse.get_pos()
+        if pygame.mouse.get_pressed() == (1, 0, 0):
+            if self.rect.left <= pos[0] <= self.rect.right and self.rect.top <= pos[1] <= self.rect.bottom:
+                self.clicked = True
+            else:
+                self.clicked = False
 
 
 
-
-
+    def draw_circle(self, display):
+        if self.clicked:
+            pygame.draw.circle(display, (0, 255, 0), (self.rect.centerx, self.rect.centery), self.radius, 5)

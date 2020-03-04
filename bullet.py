@@ -17,8 +17,8 @@ class Bullet(pygame.sprite.Sprite):
         self.dmg = dmg
 
     def aim(self):  # функиця расчета полета пули
-        x = self.enemy.rect.centerx - 18 - self.rect.x
-        y = self.enemy.rect.centery - 18 - self.rect.y
+        x = self.enemy.rect.centerx - self.rect.x
+        y = self.enemy.rect.centery - self.rect.y
         if x == 0 and y == 0:
             self.kill()
         k = pow((x * x + y * y), 0.5) / self.speed
