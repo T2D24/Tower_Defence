@@ -30,7 +30,7 @@ class Game(object):
         self.myfont = pygame.font.SysFont('arial', 33)
 
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
-        x = 100
+        x = 300
         y = 100
         for i in range(2):
             self.towers.add(Tower(x, y, tower))
@@ -147,7 +147,7 @@ class Game(object):
 
         self.enemies.update()
         self.towers.update(self.enemies, self.bullets, ms, self.display)
-        self.bullets.update()
+        self.bullets.update(ms)
         self.create_mobs(ms)
 
         # print(self.coins)

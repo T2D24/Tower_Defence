@@ -12,20 +12,17 @@ class Enemy(pygame.sprite.Sprite):
         self.image = self.anim.image
         self.rect = self.anim.rect
         self.hp = 10 + random.randint(-7, 10)
-        self.vel_x = 1
+        self.vel_x = 10
         self.path = level1
-        self.vel_y = 1
+        self.vel_y = 10
         self.reward = 2 + random.randint(-1, 3)
         self.dmg = 3 + random.randint(1, 3)
         self.hp_fix = self.hp
-
-    def maskMake(self):
         self.mask = pygame.mask.from_surface(self.image)
 
     def update(self):
         self.anim.update()
         self.image = self.anim.image
-        self.maskMake()
         self.dead()
         self.moving()
         self.health_bar()

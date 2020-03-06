@@ -15,7 +15,7 @@ class Tower(pygame.sprite.Sprite):
         self.rect.y = y
         self.level = 1
         self.upgrade_cost = 12
-        self.radius = 150
+        self.radius = 250
         self.ms = 0
         self.fire_rate = 2000
         self.dmg = 4

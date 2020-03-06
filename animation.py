@@ -1,7 +1,7 @@
 import pygame
 import os
 from config import *
-
+# закинуть часы из мейна чтобы было хорошо !!! СКОРОСТЬ
 class Animation(pygame.sprite.Sprite):
     def __init__(self, images, x, y):
         super(Animation, self).__init__()
@@ -19,7 +19,7 @@ class Animation(pygame.sprite.Sprite):
     def loadFromFiles(self, images):
         for image in images:
             self.pic = pygame.image.load(image)
-            self.pic = pygame.transform.scale(self.pic, SIZE)
+            self.pic = pygame.transform.scale(self.pic, (SIZE[0] + 30, SIZE[1]))
             self.pic.convert_alpha()
             self.tiles.append(self.pic)
 
