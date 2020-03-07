@@ -18,6 +18,10 @@ bulletImg = os.path.join(assets, 'enemy.png')
 enemies = os.path.join(assets, 'enemies_walk')
 enemy_1 = os.path.join(enemies, 'enemy_1')
 
+bullets = os.path.join(assets, 'bullets')
+fireball = os.path.join(bullets, 'fireball')
+
+
 ENEMY_1_WALK = [enemy_1 + '/9_enemies_1_walk_000.png', 
                 enemy_1 + '/9_enemies_1_walk_001.png', 
                 enemy_1 + '/9_enemies_1_walk_002.png', 
@@ -38,3 +42,9 @@ ENEMY_1_WALK = [enemy_1 + '/9_enemies_1_walk_000.png',
                 enemy_1 + '/9_enemies_1_walk_017.png',
                 enemy_1 + '/9_enemies_1_walk_018.png',
                 enemy_1 + '/9_enemies_1_walk_019.png',]
+
+FIREBALL_BLOWUP = [fireball + '/1.png',
+                   fireball + '/2.png',
+                   fireball + '/3.png',
+                   fireball + '/4.png',
+                   fireball + '/5.png']

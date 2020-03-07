@@ -32,7 +32,7 @@ class Game(object):
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
         x = 300
         y = 100
-        for i in range(2):
+        for _ in range(2):
             self.towers.add(Tower(x, y, tower))
             x += 500
 
@@ -42,7 +42,7 @@ class Game(object):
     def create_mobs(self, ms):
         self.spawn_time += ms
         if self.spawn_time > SPAWN_RATE:
-            self.enemies.add(Enemy(0, 500))
+            self.enemies.add(Enemy(0, 0))
             self.spawn_time = 0
 
     def render_cost(self):
@@ -145,7 +145,7 @@ class Game(object):
                 button.image = pygame.image.load(upgrade)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
 
-        self.enemies.update()
+        self.enemies.update(ms)
         self.towers.update(self.enemies, self.bullets, ms, self.display)
         self.bullets.update(ms)
         self.create_mobs(ms)
