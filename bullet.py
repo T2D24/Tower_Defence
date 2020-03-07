@@ -32,7 +32,7 @@ class Bullet(pygame.sprite.Sprite):
         self.nx = x / k  # локальные nx и ny
         self.ny = y / k
         self.local_ms += ms
-    #НЕ РАБОТАЕТ 
+    #перестало работать после анимации
     def bulletRotate(self):
         x1 = 0
         y1 = self.enemy.rect.y - self.rect.y
@@ -47,8 +47,7 @@ class Bullet(pygame.sprite.Sprite):
                 angle += 90
             if angle < 0:
                 angle -= 90
-        self.anim.image = pygame.transform.rotate(self.anim.image, angle)
-        self.anim.image.convert_alpha()
+        self.anim.rotate(angle + 180)
         self.local_ms = 0
 
     def update(self, ms):

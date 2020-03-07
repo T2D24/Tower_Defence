@@ -12,6 +12,12 @@ class Animation(pygame.sprite.Sprite):
         self.loadFromFiles(images, size)
         self.image = pygame.Surface(SIZE, 
                             pygame.SRCALPHA | pygame.HWSURFACE)
+        self.image.fill(pygame.SRCALPHA | pygame.HWSURFACE)
+        self.image.blit(self.tiles[0], (0, 0))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.image.convert_alpha()                    
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
@@ -26,15 +32,11 @@ class Animation(pygame.sprite.Sprite):
             self.pic.convert_alpha()
             self.tiles.append(self.pic)
 
+    def rotate(self, angle):
+        self.image = pygame.transform.rotate(self.image, angle)
+
     def update(self, ms):
-        if self.paused:
-            self.image.fill(pygame.SRCALPHA | pygame.HWSURFACE)
-            self.image.blit(self.tiles[0], (0, 0))
-            self.rect = self.image.get_rect()
-            self.rect.x = self.x
-            self.rect.y = self.y
-            self.image.convert_alpha()
-        else:
+        if not self.paused:
             self.time += ms
             if self.time // FPS >= len(self.tiles) and self.loop:
                 self.time = 0
