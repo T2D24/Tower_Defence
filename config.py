@@ -4,16 +4,17 @@ WIN_SIZE = (1200, 900)
 SIZE = (64, 64)
 FPS = 30
 BUTTON_SIZE = (26, 25)
-
+SHOP_SIZE = (128, 128)
 currentDir = os.path.dirname(__file__)
 assets = os.path.join(currentDir, 'assets')
 SPAWN_RATE = 4000
-tower = os.path.join(assets, 'tower.png')
-enemy = os.path.join(assets, 'enemy.png')
+TOWER = os.path.join(assets, 'tower.png')
+SHOP = os.path.join(assets, 'shop.png')
+ENEMY = os.path.join(assets, 'enemy.png')
 BG = os.path.join(assets, 'bg.png')
-upgrade = os.path.join(assets, 'upgrade.png')
-cupgrade = os.path.join(assets, 'cupgrade.png')
-bulletImg = os.path.join(assets, 'enemy.png')
+UPGRADE = os.path.join(assets, 'upgrade.png')
+CUPGRADE = os.path.join(assets, 'cupgrade.png')
+BULLET_IMG = os.path.join(assets, 'enemy.png')
 
 enemies = os.path.join(assets, 'enemies_walk')
 enemy_1 = os.path.join(enemies, 'enemy_1')

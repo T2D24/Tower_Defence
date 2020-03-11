@@ -4,6 +4,7 @@ from pygame.locals import *
 from config import *
 from enemy import *
 from tower import *
+from shop import *
 
 
 class Game(object):
@@ -33,7 +34,7 @@ class Game(object):
         x = 300
         y = 100
         for _ in range(2):
-            self.towers.add(Tower(x, y, tower))
+            self.towers.add(Tower(x, y, TOWER))
             x += 500
 
         for block in self.towers:
@@ -49,8 +50,10 @@ class Game(object):
         for button in self.buttons:
             button.draw_cost(self.display)
 
-    def draw_shop(self):
-        pass
+    #def start_shop(self):
+     #   pos = pygame.mouse.get_pos()
+      #  self.new_shop = Shop(pos, SHOP)
+       # self.new_shop.draw_shop(self.display)
 
     def render(self):
         self.display.blit(self.background, (0, 0))
@@ -65,10 +68,7 @@ class Game(object):
         self.render_cost()
         self.draw_t_radius()
         if self.show_shop:
-            pygame.draw.polygon(self.display, (255, 255, 255),
-                                [(0, 3 * WIN_SIZE[1] // 4), (0, WIN_SIZE[1]), (WIN_SIZE[0], WIN_SIZE[1]),
-                                 (WIN_SIZE[0], 3 * WIN_SIZE[1] // 4)
-                                 ])
+            self.new_shop.draw_shop(self.display)
         if self.lives <= 0:
             self.draw_death_screen()
         pygame.display.update()
@@ -76,13 +76,20 @@ class Game(object):
     def events(self):
         pos = pygame.mouse.get_pos()
         for event in pygame.event.get():
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_b:
+                        x = pos[0] - 50
+                        y = pos[1] - 50
+                        self.new_shop = Shop((x, y), SHOP)
+                        self.show_shop = not self.show_shop
+                        if not self.show_shop:
+                            self.new_shop.kill()
+
             if event.type == QUIT:
                 self.running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
-                if event.key == pygame.K_b:
-                    self.show_shop = True
             if event.type == pygame.MOUSEBUTTONDOWN:
                 for button in self.buttons:
                     if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom\
@@ -90,8 +97,7 @@ class Game(object):
                         self.coins -= button.tower.upgrade_cost
                         button.clicked()
                         print(button.tower.upgrade_cost)
-        if pygame.key.get_pressed()[pygame.K_b] and self.show_shop:
-            self.show_shop = False
+
 
     # def menu_get_events(self):
     #     for event in pygame.event.get():
@@ -139,10 +145,10 @@ class Game(object):
                 self.lives -= block.dmg
         for button in self.buttons:
             if self.coins < button.tower.upgrade_cost:
-                button.image = pygame.image.load(cupgrade)
+                button.image = pygame.image.load(CUPGRADE)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
             else:
-                button.image = pygame.image.load(upgrade)
+                button.image = pygame.image.load(UPGRADE)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
 
         self.enemies.update(ms)
