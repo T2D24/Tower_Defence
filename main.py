@@ -5,7 +5,7 @@ from config import *
 from enemy import *
 from tower import *
 
-
+# уровни и шоп
 class Game(object):
     def __init__(self):
         super(Game, self).__init__()
@@ -34,11 +34,11 @@ class Game(object):
         y = 100
         for _ in range(2):
             self.towers.add(Tower(x, y, tower))
-            x += 500
+            x += 300
 
         for block in self.towers:
             self.buttons.add(block.button)
-
+    # КООООРДИНАТЫ НЕ РАБОТАЮ ГАД ДАМН ИТ БОЙ
     def create_mobs(self, ms):
         self.spawn_time += ms
         if self.spawn_time > SPAWN_RATE:
@@ -144,6 +144,7 @@ class Game(object):
             else:
                 button.image = pygame.image.load(upgrade)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
+        
 
         self.enemies.update(ms)
         self.towers.update(self.enemies, self.bullets, ms, self.display)

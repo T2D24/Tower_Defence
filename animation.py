@@ -1,7 +1,7 @@
 import pygame
 import os
 from config import *
-
+# анимация смерти и урона у врага 
 class Animation(pygame.sprite.Sprite):
     def __init__(self, images, x, y, size, loop, paused):
         super(Animation, self).__init__()

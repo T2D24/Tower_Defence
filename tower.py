@@ -3,7 +3,7 @@ from config import *
 from bullet import *
 from button import *
 
-
+# новые типы башен и анимация башен 
 class Tower(pygame.sprite.Sprite):
     def __init__(self, x, y, image):
         super(Tower, self).__init__()
