@@ -6,7 +6,7 @@ from enemy import *
 from tower import *
 from shop import *
 
-
+# уровни и шоп
 class Game(object):
     def __init__(self):
         super(Game, self).__init__()
@@ -34,12 +34,12 @@ class Game(object):
         x = 300
         y = 100
         for _ in range(2):
-            self.towers.add(Tower(x, y, TOWER))
-            x += 500
+            self.towers.add(Tower(x, y, tower))
+            x += 300
 
         for block in self.towers:
             self.buttons.add(block.button)
-
+    # КООООРДИНАТЫ НЕ РАБОТАЮ ГАД ДАМН ИТ БОЙ
     def create_mobs(self, ms):
         self.spawn_time += ms
         if self.spawn_time > SPAWN_RATE:
@@ -154,6 +154,7 @@ class Game(object):
             else:
                 button.image = pygame.image.load(UPGRADE)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
+        
 
         self.enemies.update(ms)
         self.towers.update(self.enemies, self.bullets, ms, self.display)

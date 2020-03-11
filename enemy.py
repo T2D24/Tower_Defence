@@ -8,7 +8,10 @@ from animation import Animation
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, x, y):
         super(Enemy, self).__init__()
-        self.anim = Animation(ENEMY_1_WALK, x, y, (SIZE[0] + 30, SIZE[1]), True, False)
+        if random.randint(0, 1) == 1:
+            self.anim = Animation(ENEMY_2_WALK, x, y, (SIZE[0] + 25, SIZE[1]), True, False)
+        else: 
+            self.anim = Animation(ENEMY_1_WALK, x, y, (SIZE[0] + 25, SIZE[1]), True, False)
         self.image = self.anim.image
         self.rect = self.anim.rect
         self.hp = 10 + random.randint(-7, 10)
@@ -18,7 +21,7 @@ class Enemy(pygame.sprite.Sprite):
         self.reward = 2 + random.randint(-1, 3)
         self.dmg = 3 + random.randint(1, 3)
         self.hp_fix = self.hp
-        self.mask = pygame.mask.from_surface(self.image)
+        self.radius = SIZE[0] // 3
 
     def update(self, ms):
         self.anim.update(ms)
