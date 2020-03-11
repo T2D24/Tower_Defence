@@ -20,6 +20,7 @@ class Tower(pygame.sprite.Sprite):
         self.fire_rate = 2000
         self.dmg = 4
         self.button = Button(self)
+        self.cost_to_buy = 200
         self.clicked = False
 
     def update(self, enemies, bullets, ms, display):
@@ -27,7 +28,7 @@ class Tower(pygame.sprite.Sprite):
                                               collided=pygame.sprite.collide_circle_ratio(1))
         self.ms += ms
         if enemies and self.ms > self.fire_rate:
-            newBullet = Bullet(bulletImg, self.rect.topleft, enemies[0], self.dmg)
+            newBullet = Bullet(BULLET_IMG, self.rect.topleft, enemies[0], self.dmg)
             newBullet.add(bullets)
             self.ms = 0
         self.check_radius()

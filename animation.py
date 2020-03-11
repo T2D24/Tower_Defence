@@ -2,6 +2,7 @@ import pygame
 import os
 from config import *
 # анимация смерти и урона у врага 
+
 class Animation(pygame.sprite.Sprite):
     def __init__(self, images, x, y, size, loop, paused):
         super(Animation, self).__init__()
@@ -10,14 +11,14 @@ class Animation(pygame.sprite.Sprite):
         self.tiles = []
         self.time = 0
         self.loadFromFiles(images, size)
-        self.image = pygame.Surface(SIZE, 
-                            pygame.SRCALPHA | pygame.HWSURFACE)
+        self.image = pygame.Surface(SIZE,
+                                    pygame.SRCALPHA | pygame.HWSURFACE)
         self.image.fill(pygame.SRCALPHA | pygame.HWSURFACE)
         self.image.blit(self.tiles[0], (0, 0))
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-        self.image.convert_alpha()                    
+        self.image.convert_alpha()
         self.rect = self.image.get_rect()
         self.x = x
         self.y = y
@@ -49,8 +50,3 @@ class Animation(pygame.sprite.Sprite):
             self.rect.x = self.x
             self.rect.y = self.y
             self.image.convert_alpha()
-            
-            
-
-    
-        
