@@ -34,7 +34,7 @@ class Game(object):
         x = 300
         y = 100
         for _ in range(2):
-            self.towers.add(Tower(x, y, tower))
+            self.towers.add(Tower(x, y, TOWER))
             x += 300
 
         for block in self.towers:
