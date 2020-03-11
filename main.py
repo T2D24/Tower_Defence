@@ -91,6 +91,10 @@ class Game(object):
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
+                if self.new_shop.rect.right // 4 < pos[0] > self.new_shop.rect.left and self.coins >= 100 and self.show_shop:
+                    self.coins = self.new_shop.buy_tower(self.coins, self.towers)
+                    self.new_shop.kill()
+                    print(1)
                 for button in self.buttons:
                     if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom\
                             and self.coins >= button.tower.upgrade_cost:
