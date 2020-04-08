@@ -18,7 +18,7 @@ class Tower(pygame.sprite.Sprite):
         self.radius = 250
         self.ms = 0
         self.fire_rate = 2000
-        self.dmg = 4
+        self.dmg = 0
         self.button = Button(self)
         self.cost_to_buy = 200
         self.clicked = False

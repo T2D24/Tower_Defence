@@ -40,6 +40,7 @@ class Game(object):
 
         for block in self.towers:
             self.buttons.add(block.button)
+
     # КООООРДИНАТЫ НЕ РАБОТАЮ ГАД ДАМН ИТ БОЙ
     def create_mobs(self, ms):
         self.spawn_time += ms
@@ -94,14 +95,17 @@ class Game(object):
             if event.type == pygame.MOUSEBUTTONDOWN and self.new_shop != 0:
                 if self.new_shop.rect.right // 4 < pos[0] > self.new_shop.rect.left and self.coins >= 100 and self.show_shop:
                     self.coins = self.new_shop.buy_tower(self.coins, self.towers)
+                    for block in self.towers:
+                        self.buttons.add(block.button)
                     self.new_shop.kill()
-                    print(1)
+                    print(self.new_shop)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                print(1)
                 for button in self.buttons:
                     if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom\
                             and self.coins >= button.tower.upgrade_cost:
                         self.coins -= button.tower.upgrade_cost
                         button.clicked()
-                        print(button.tower.upgrade_cost)
 
 
     # def menu_get_events(self):
@@ -147,6 +151,7 @@ class Game(object):
             if block.dead() == (1, None):
                 self.coins += block.reward
             if block.moving() == (1, None):
+                print(1)
                 self.lives -= block.dmg
         for button in self.buttons:
             if self.coins < button.tower.upgrade_cost:
@@ -155,8 +160,6 @@ class Game(object):
             else:
                 button.image = pygame.image.load(UPGRADE)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
-        
-
         self.enemies.update(ms)
         self.towers.update(self.enemies, self.bullets, ms, self.display)
         self.bullets.update(ms)
