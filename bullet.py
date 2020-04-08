@@ -44,7 +44,7 @@ class Bullet(pygame.sprite.Sprite):
         y1 = self.enemy.rect.y - self.rect.y
         x2 = self.enemy.rect.x - self.rect.x
         y2 = self.enemy.rect.y - self.rect.y
-        cosa = (x1 * x2 + y1 * y2)  / ((math.sqrt(x1 * x1 + y1 * y1) * math.sqrt(x2 * x2 + y2 * y2)) + 1)
+        cosa = (x1 * x2 + y1 * y2)  / ((math.sqrt(x1 * x1 + y1 * y1) * math.sqrt(x2 * x2 + y2 * y2)))
         angle = math.acos(cosa) * 57.2958
         if self.rect.x < self.enemy.rect.x:
             angle *= -1

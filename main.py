@@ -33,7 +33,7 @@ class Game(object):
 
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
         x = 300
-        y = 100
+        y = 120
         for _ in range(2):
             self.towers.add(Tower(x, y, TOWER))
             x += 300
