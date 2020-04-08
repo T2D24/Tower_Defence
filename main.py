@@ -28,6 +28,7 @@ class Game(object):
         self.lives = 20
         self.show_shop = False
         self.spawn_time = 0
+        self.new_shop = 0
         self.myfont = pygame.font.SysFont('arial', 33)
 
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
@@ -90,7 +91,7 @@ class Game(object):
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     self.running = False
-            if event.type == pygame.MOUSEBUTTONDOWN:
+            if event.type == pygame.MOUSEBUTTONDOWN and self.new_shop != 0:
                 if self.new_shop.rect.right // 4 < pos[0] > self.new_shop.rect.left and self.coins >= 100 and self.show_shop:
                     self.coins = self.new_shop.buy_tower(self.coins, self.towers)
                     self.new_shop.kill()
