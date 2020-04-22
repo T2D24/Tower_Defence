@@ -81,7 +81,7 @@ class Game(object):
 
     def render(self):
         #self.display.blit(self.background, (0, 0))
-        self.display.fill((255, 255, 255))
+        pygame.display.set_caption(str(self.clock.get_fps()))
         self.load_map()
         self.towers.draw(self.display)
         self.enemies.draw(self.display)
