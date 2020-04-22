@@ -2,7 +2,7 @@ import os
 
 WIN_SIZE = (1600, 900)
 SIZE = (64, 64)
-FPS = 30
+FPS = 40
 BUTTON_SIZE = (26, 25)
 SHOP_SIZE = (128, 128)
 currentDir = os.path.dirname(__file__)

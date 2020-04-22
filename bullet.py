@@ -6,26 +6,26 @@ from animation import Animation
 
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, image, spawn, pos, dmg):
+    def __init__(self, image, spawn, enemy, dmg, type):
         super(Bullet, self).__init__()
         if random.randint(0, 1) == 1:
             # сделать выбор спрайта при создании
-            self.anim = Animation(STONE_BLOWUP, spawn[0], spawn[1], \
-                                  (SIZE[0] - 30, SIZE[1] - 30), False, True)
+            self.anim = Animation(STONE_BLOWUP, spawn[0], spawn[1], (SIZE[0] - 30, SIZE[1] - 30), False, True)
         else:
-            self.anim = Animation(FIREBALL_BLOWUP, spawn[0], spawn[1], \
-                                  (SIZE[0] - 40, SIZE[1] - 10), False, True)
+            self.anim = Animation(FIREBALL_BLOWUP, spawn[0], spawn[1], (SIZE[0] - 40, SIZE[1] - 10), False, True)
         self.image = self.anim.image
         self.rect = self.anim.rect
         self.rect.x, self.rect.y = spawn[0], spawn[1]
         self.speed = 8
         self.pos = pos
+        self.type = type
         self.spawn = spawn
         self.dmg = dmg
         self.local_ms = 0
         self.radius = SIZE[0] // 3
         self.enemies = enemies
         self.bulletRotate()
+        self.aoe = 200
 
     def aim(self, ms):  # функиця расчета полета пули
         x = self.pos[0] - self.rect.x
@@ -64,6 +64,18 @@ class Bullet(pygame.sprite.Sprite):
 
     def hitting(self, enemies):
         for enemy in enemies:
-            if pygame.sprite.collide_circle(enemy, self):
-                enemy.hp -= self.dmg
-                self.anim.paused = False
+            if pygame.sprite.collide_circle(enemy, self):   
+                if self.type == 'splash':
+                    for block in enemies:
+                        if math.sqrt((block.rect.center[0] - self.enemy.rect.center[0]) ** 2 + (block.rect.center[1] - self.enemy.rect.center[1]) ** 2) < self.aoe:
+                            block.hp -= self.dmg // 2
+
+                    self.enemy.hp -= self.dmg
+                    self.anim.paused = False
+                if self.type == 'arch':
+                    self.enemy.hp -= self.dmg
+                    self.anim.paused = False
+
+
+        if self.anim.finished:
+            self.kill()
