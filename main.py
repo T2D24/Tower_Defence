@@ -187,8 +187,8 @@ class Game(object):
         
 
         self.enemies.update(ms)
-        self.towers.update(self.enemies, self.bullets, ms, self.display)
-        self.bullets.update(ms)
+        self.towers.update(self.bullets, ms, self.display)
+        self.bullets.update(ms, self.enemies)
         self.create_mobs(ms)
 
         # print(self.coins)

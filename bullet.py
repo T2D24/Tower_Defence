@@ -6,7 +6,7 @@ from animation import Animation
 
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, image, spawn, enemy, dmg):
+    def __init__(self, image, spawn, pos, dmg):
         super(Bullet, self).__init__()
         if random.randint(0, 1) == 1:
             # сделать выбор спрайта при создании
@@ -19,16 +19,17 @@ class Bullet(pygame.sprite.Sprite):
         self.rect = self.anim.rect
         self.rect.x, self.rect.y = spawn[0], spawn[1]
         self.speed = 8
-        self.enemy = enemy
+        self.pos = pos
         self.spawn = spawn
         self.dmg = dmg
         self.local_ms = 0
         self.radius = SIZE[0] // 3
+        self.enemies = enemies
         self.bulletRotate()
 
     def aim(self, ms):  # функиця расчета полета пули
-        x = self.enemy.rect.x - self.rect.x
-        y = self.enemy.rect.y - self.rect.y
+        x = self.pos[0] - self.rect.x
+        y = self.pos[1] - self.rect.y
         if x == 0 and y == 0:
             self.kill()
         k = pow((x * x + y * y), 0.5) // self.speed
@@ -41,29 +42,28 @@ class Bullet(pygame.sprite.Sprite):
     # перестало работать после анимации
     def bulletRotate(self):
         x1 = 0
-        y1 = self.enemy.rect.y - self.rect.y
-        x2 = self.enemy.rect.x - self.rect.x
-        y2 = self.enemy.rect.y - self.rect.y
+        y1 = self.pos[1] - self.rect.y
+        x2 = self.pos[0] - self.rect.x
+        y2 = self.pos[1] - self.rect.y
         cosa = (x1 * x2 + y1 * y2)  / ((math.sqrt(x1 * x1 + y1 * y1) * math.sqrt(x2 * x2 + y2 * y2)))
         angle = math.acos(cosa) * 57.2958
-        if self.rect.x < self.enemy.rect.x:
+        if self.rect.x < self.pos[0]:
             angle *= -1
-        if self.rect.y < self.enemy.rect.y:
+        if self.rect.y < self.pos[1]:
             angle = 180 - angle
         self.anim.rotate(angle + 180)
         self.local_ms = 0
 
-    def update(self, ms):
+    def update(self, ms, enemies):
         self.anim.update(ms)
         self.image = self.anim.image
         self.aim(ms)
         self.rect.x += self.nx
         self.rect.y += self.ny
-        self.hitting()
+        self.hitting(enemies)
 
-    def hitting(self):
-        if pygame.sprite.collide_circle(self.enemy, self) and self.anim.paused:
-            self.enemy.hp -= self.dmg
-            self.anim.paused = False
-        if self.anim.finished:
-            self.kill()
+    def hitting(self, enemies):
+        for enemy in enemies:
+            if pygame.sprite.collide_circle(enemy, self):
+                enemy.hp -= self.dmg
+                self.anim.paused = False

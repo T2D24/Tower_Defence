@@ -24,12 +24,10 @@ class Tower(pygame.sprite.Sprite):
         self.cost_to_buy = 200
         self.clicked = False
 
-    def update(self, enemies, bullets, ms, display):
-        enemies = pygame.sprite.spritecollide(self, enemies, False,
-                                              collided=pygame.sprite.collide_circle_ratio(1))
+    def update(self, bullets, ms, display):
         self.ms += ms
-        if enemies and self.ms > self.fire_rate:
-            newBullet = Bullet(BULLET_IMG, self.rect.topleft, enemies[0], self.dmg)
+        if pygame.mouse.get_pressed() == (1, 0, 0):
+            newBullet = Bullet(BULLET_IMG, self.rect.topleft, pygame.mouse.get_pos(), self.dmg)
             newBullet.add(bullets)
             self.ms = 0
         self.check_radius()
