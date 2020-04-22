@@ -31,6 +31,28 @@ class Game(object):
         self.spawn_time = 0
         self.new_shop = 0
         self.myfont = pygame.font.SysFont('arial', 33)
+        self.load_map()
+        
+    def load_map(self):
+        file = open('level.txt')
+        A = pygame.image.load('assets/map-tiles/1.png')
+        A = pygame.transform.scale(A, (WIN_SIZE[0] // 16, WIN_SIZE[1] // 9))
+        B = pygame.image.load('assets/map-tiles/9.png')
+        B = pygame.transform.scale(B, (WIN_SIZE[0] // 16, WIN_SIZE[1] // 9))
+        V = pygame.image.load('assets/map-tiles/3.png')
+        V = pygame.transform.scale(V, (WIN_SIZE[0] // 16, WIN_SIZE[1] // 9))
+        C = pygame.image.load('assets/map-tiles/4.png')
+        C = pygame.transform.scale(C, (WIN_SIZE[0] // 16, WIN_SIZE[1] // 9))
+        for y1, line in enumerate(file):
+            for x1, letter in enumerate(line.strip()):
+                if letter == 'A':
+                    self.display.blit(A, (x1 * (WIN_SIZE[0] // 16), y1 * (WIN_SIZE[1] // 9)))
+                if letter == 'B':
+                    self.display.blit(B, (x1 * (WIN_SIZE[0] // 16), y1 * (WIN_SIZE[1] // 9)))
+                if letter == 'C':
+                    self.display.blit(C, (x1 * (WIN_SIZE[0] // 16), y1 * (WIN_SIZE[1] // 9)))
+                if letter == 'V':
+                    self.display.blit(V, (x1 * (WIN_SIZE[0] // 16), y1 * (WIN_SIZE[1] // 9)))
 
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
         x = 300
@@ -41,7 +63,6 @@ class Game(object):
 
         for block in self.towers:
             self.buttons.add(block.button)
-
     # КООООРДИНАТЫ НЕ РАБОТАЮ ГАД ДАМН ИТ БОЙ
     def create_mobs(self, ms):
         self.spawn_time += ms
@@ -59,7 +80,9 @@ class Game(object):
        # self.new_shop.draw_shop(self.display)
 
     def render(self):
-        self.display.blit(self.background, (0, 0))
+        #self.display.blit(self.background, (0, 0))
+        self.display.fill((255, 255, 255))
+        self.load_map()
         self.towers.draw(self.display)
         self.enemies.draw(self.display)
         self.buttons.draw(self.display)
@@ -75,6 +98,7 @@ class Game(object):
         if self.lives <= 0:
             self.draw_death_screen()
         pygame.display.update()
+        
 
     def events(self):
         pos = pygame.mouse.get_pos()
@@ -107,6 +131,7 @@ class Game(object):
                             and self.coins >= button.tower.upgrade_cost:
                         self.coins -= button.tower.upgrade_cost
                         button.clicked()
+                        print(button.tower.upgrade_cost)
 
 
     # def menu_get_events(self):
@@ -152,7 +177,6 @@ class Game(object):
             if block.dead() == (1, None):
                 self.coins += block.reward
             if block.moving() == (1, None):
-                print(1)
                 self.lives -= block.dmg
         for button in self.buttons:
             if self.coins < button.tower.upgrade_cost:
@@ -161,6 +185,8 @@ class Game(object):
             else:
                 button.image = pygame.image.load(UPGRADE)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
+        
+
         self.enemies.update(ms)
         self.towers.update(self.enemies, self.bullets, ms, self.display)
         self.bullets.update(ms)

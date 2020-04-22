@@ -2,17 +2,18 @@ import pygame
 from config import *
 from bullet import *
 from button import *
+from animation import Animation
+
 
 # новые типы башен и анимация башен 
 class Tower(pygame.sprite.Sprite):
-    def __init__(self, x, y, image):
+    def __init__(self, x, y, images):
         super(Tower, self).__init__()
-        self.image = pygame.image.load(image)
-        self.image = pygame.transform.scale(self.image, SIZE)
-        self.image.convert_alpha()
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
+        self.anim = Animation(TOWER_1, x, y, \
+                                  SIZE, True, False)
+        self.image = self.anim.image
+        self.rect = self.anim.rect
+        self.rect.x, self.rect.y = x, y
         self.level = 1
         self.upgrade_cost = 12
         self.radius = 250
@@ -32,6 +33,8 @@ class Tower(pygame.sprite.Sprite):
             newBullet.add(bullets)
             self.ms = 0
         self.check_radius()
+        self.anim.update(ms - 30)
+        self.image = self.anim.image
 
     def check_radius(self):
         pos = pygame.mouse.get_pos()
