@@ -33,7 +33,7 @@ class Tower(pygame.sprite.Sprite):
             newBullet.add(bullets)
             self.ms = 0
         self.check_radius()
-        self.anim.update(ms - 30)
+        self.anim.update(ms - 25)
         self.image = self.anim.image
 
     def check_radius(self):

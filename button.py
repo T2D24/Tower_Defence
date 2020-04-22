@@ -26,16 +26,3 @@ class Button(pygame.sprite.Sprite):
     def draw_cost(self, display):
         cost = self.myfont.render(str(self.tower.upgrade_cost), False, (0, 0, 0))
         display.blit(cost, self.rect.bottomleft)
-
-
-
-
-
-
-
-
-
-
-
-
-
