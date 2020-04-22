@@ -6,7 +6,7 @@ from animation import Animation
 
 
 class Bullet(pygame.sprite.Sprite):
-    def __init__(self, image, spawn, enemy, dmg, type):
+    def __init__(self, image, spawn, pos, dmg, type):
         super(Bullet, self).__init__()
         if random.randint(0, 1) == 1:
             # сделать выбор спрайта при создании
@@ -67,13 +67,12 @@ class Bullet(pygame.sprite.Sprite):
             if pygame.sprite.collide_circle(enemy, self):   
                 if self.type == 'splash':
                     for block in enemies:
-                        if math.sqrt((block.rect.center[0] - self.enemy.rect.center[0]) ** 2 + (block.rect.center[1] - self.enemy.rect.center[1]) ** 2) < self.aoe:
+                        if math.sqrt((block.rect.center[0] - enemy.rect.center[0]) ** 2 + (block.rect.center[1] - enemy.rect.center[1]) ** 2) < self.aoe:
                             block.hp -= self.dmg // 2
-
-                    self.enemy.hp -= self.dmg
+                    enemy.hp -= self.dmg
                     self.anim.paused = False
                 if self.type == 'arch':
-                    self.enemy.hp -= self.dmg
+                    enemy.hp -= self.dmg
                     self.anim.paused = False
 
 

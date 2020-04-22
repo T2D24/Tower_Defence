@@ -28,7 +28,7 @@ class Tower(pygame.sprite.Sprite):
     def update(self, bullets, ms, display):
         self.ms += ms
         if pygame.mouse.get_pressed() == (1, 0, 0):
-            newBullet = Bullet(BULLET_IMG, self.rect.topleft, pygame.mouse.get_pos(), self.dmg)
+            newBullet = Bullet(BULLET_IMG, self.rect.topleft, pygame.mouse.get_pos(), self.dmg, self.type)
             newBullet.add(bullets)
             self.ms = 0
 
