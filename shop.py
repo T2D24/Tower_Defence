@@ -2,8 +2,6 @@ import pygame
 from config import *
 import math
 from tower import *
-from animation import Animation
-
 
 
 class Shop(pygame.sprite.Sprite):

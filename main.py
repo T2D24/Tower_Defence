@@ -6,6 +6,7 @@ from enemy import *
 from tower import *
 from shop import *
 
+
 # уровни и шоп
 class Game(object):
     def __init__(self):

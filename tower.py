@@ -41,8 +41,6 @@ class Tower(pygame.sprite.Sprite):
             else:
                 self.clicked = False
 
-
-
     def draw_circle(self, display):
         if self.clicked:
             pygame.draw.circle(display, (0, 255, 0), (self.rect.centerx, self.rect.centery), self.radius, 5)
