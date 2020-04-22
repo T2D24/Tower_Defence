@@ -57,9 +57,9 @@ class Game(object):
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
         x = 300
         y = 120
-        for _ in range(2):
-            self.towers.add(Tower(x, y, TOWER))
-            x += 300
+        for _ in range(1):
+            self.towers.add(Tower(x, y, TOWER, 'arch'))
+            x += 1000
 
         for block in self.towers:
             self.buttons.add(block.button)
@@ -98,7 +98,6 @@ class Game(object):
         if self.lives <= 0:
             self.draw_death_screen()
         pygame.display.update()
-        
 
     def events(self):
         pos = pygame.mouse.get_pos()
@@ -123,15 +122,13 @@ class Game(object):
                     for block in self.towers:
                         self.buttons.add(block.button)
                     self.new_shop.kill()
-                    print(self.new_shop)
             if event.type == pygame.MOUSEBUTTONDOWN:
-                print(1)
                 for button in self.buttons:
                     if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom\
                             and self.coins >= button.tower.upgrade_cost:
                         self.coins -= button.tower.upgrade_cost
                         button.clicked()
-                        print(button.tower.upgrade_cost)
+
 
 
     # def menu_get_events(self):
@@ -189,7 +186,7 @@ class Game(object):
 
         self.enemies.update(ms)
         self.towers.update(self.enemies, self.bullets, ms, self.display)
-        self.bullets.update(ms)
+        self.bullets.update(ms, self.enemies)
         self.create_mobs(ms)
 
         # print(self.coins)

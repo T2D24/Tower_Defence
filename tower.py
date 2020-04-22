@@ -7,10 +7,11 @@ from animation import Animation
 
 # новые типы башен и анимация башен 
 class Tower(pygame.sprite.Sprite):
-    def __init__(self, x, y, images):
+    def __init__(self, x, y, images, type):
         super(Tower, self).__init__()
         self.anim = Animation(TOWER_1, x, y, \
                                   SIZE, True, False)
+        self.type = type
         self.image = self.anim.image
         self.rect = self.anim.rect
         self.rect.x, self.rect.y = x, y
@@ -29,11 +30,12 @@ class Tower(pygame.sprite.Sprite):
                                               collided=pygame.sprite.collide_circle_ratio(1))
         self.ms += ms
         if enemies and self.ms > self.fire_rate:
-            newBullet = Bullet(BULLET_IMG, self.rect.topleft, enemies[0], self.dmg)
+            newBullet = Bullet(BULLET_IMG, self.rect.topleft, enemies[0], self.dmg, self.type)
             newBullet.add(bullets)
             self.ms = 0
+
         self.check_radius()
-        self.anim.update(ms - 30)
+        self.anim.update(ms - 20)
         self.image = self.anim.image
 
     def check_radius(self):

@@ -31,6 +31,8 @@ class Enemy(pygame.sprite.Sprite):
         self.health_bar()
         # print(self.rect.x, " ", self.rect.y)
 
+        # расстояние меньше радиуса
+
     def moving(self):  # переписать этот метод, а то это полное говно
 
         if self.rect.y <= 0:
