@@ -19,7 +19,7 @@ class Shop(pygame.sprite.Sprite):
 
     def buy_tower(self, gold, towers):
         gold -= 100
-        towers.add(Tower(self.rect.x + 45, self.rect.y + 43, TOWER, 'splash'))
+        towers.add(Tower(self.rect.x + 20, self.rect.y, TOWER, 'splash'))
         return gold
 
 

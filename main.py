@@ -5,7 +5,7 @@ from config import *
 from enemy import *
 from tower import *
 from shop import *
-from platform import  *
+from platforms import *
 
 
 # уровни и шоп
@@ -85,6 +85,7 @@ class Game(object):
         #self.display.blit(self.background, (0, 0))
         pygame.display.set_caption(str(self.clock.get_fps()))
         self.load_map()
+        self.platforms.draw(self.display)
         self.towers.draw(self.display)
         self.enemies.draw(self.display)
         self.buttons.draw(self.display)
@@ -104,14 +105,6 @@ class Game(object):
     def events(self):
         pos = pygame.mouse.get_pos()
         for event in pygame.event.get():
-            if event.type == pygame.KEYUP:
-                if event.key == pygame.K_b:
-                        x = pos[0] - 50
-                        y = pos[1] - 50
-                        self.new_shop = Shop((x, y), SHOP)
-                        self.show_shop = not self.show_shop
-                        if not self.show_shop:
-                            self.new_shop.kill()
 
             if event.type == QUIT:
                 self.running = False
@@ -124,7 +117,18 @@ class Game(object):
                     for block in self.towers:
                         self.buttons.add(block.button)
                     self.new_shop.kill()
+                    self.show_shop = False
             if event.type == pygame.MOUSEBUTTONDOWN:
+                for platform in self.platforms:
+                    if platform.rect.left <= pos[0] <= platform.rect.right and platform.rect.top <= pos[1] <= platform.rect.bottom:
+                        if platform.able_click:
+                            bouth = False
+                            x = platform.rect.x
+                            y = platform.rect.y
+                            self.new_shop = Shop((x, y), SHOP)
+                            self.show_shop = not self.show_shop
+                            platform.able_click = False
+
                 for button in self.buttons:
                     if button.rect.left <= pos[0] <= button.rect.right and button.rect.top <= pos[1] <= button.rect.bottom\
                             and self.coins >= button.tower.upgrade_cost:
@@ -184,7 +188,6 @@ class Game(object):
             else:
                 button.image = pygame.image.load(UPGRADE)
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
-        
 
         self.enemies.update(ms)
         self.towers.update( self.bullets, ms, self.display)
