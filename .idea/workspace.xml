@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="916a271b-08f8-4af7-9172-2509c80d0140" name="Default Changelist" comment="переписанный метод moving, но в будущем нужно переписать">
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/11.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/12.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/12.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/13.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/13.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/14.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/14.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/15.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/15.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/16.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/16.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/17.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/17.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/18.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/18.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/19.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/19.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/20.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/20.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/21.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/21.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/22.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/22.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/8.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/towers/tower_1/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/towers/tower_1/9.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/button.py" beforeDir="false" afterPath="$PROJECT_DIR$/button.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/platform.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tower.py" beforeDir="false" afterPath="$PROJECT_DIR$/tower.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -77,62 +58,66 @@
     <session id="-446612452">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
-          <entry key="project.open.time.0" value="2" />
+          <entry key="project.closed" value="7" />
+          <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="png" value="14" />
-          <entry key="py" value="8" />
-          <entry key="txt" value="1" />
+          <entry key="jpg" value="2" />
+          <entry key="png" value="46" />
+          <entry key="py" value="18" />
+          <entry key="txt" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Image" value="14" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="8" />
+          <entry key="Image" value="48" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="2249" />
-          <entry key="txt" value="225" />
+          <entry key="py" value="3659" />
+          <entry key="txt" value="227" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="225" />
-          <entry key="Python" value="2249" />
+          <entry key="PLAIN_TEXT" value="227" />
+          <entry key="Python" value="3659" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/enemy.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="22" column="29" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="29" />
+            <state relative-caret-position="117">
+              <caret line="63" column="49" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="49" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+                <marker date="1588141411320" expanded="true" signature="1141:1150" ph="..." />
+                <marker date="1588141411320" expanded="true" signature="7983:7992" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/main.py">
+        <entry file="file://$PROJECT_DIR$/platform.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="82">
-              <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+            <state relative-caret-position="240">
+              <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -143,58 +128,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/animation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/button.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="24" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-                <marker date="1587538992835" expanded="true" signature="72:73" ph="..." />
-                <marker date="1587538992835" expanded="true" signature="710:750" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tower.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bullet.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="177">
+              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -202,11 +137,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="75" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/level.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -222,16 +163,11 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>draw_rad</find>
-      <find>draw_</find>
-      <find>check</find>
-      <find>prin</find>
       <find>dead</find>
       <find>event</find>
       <find>pr</find>
       <find>\</find>
       <find>update</find>
-      <find>shop</find>
       <find>mouse</find>
       <find>re</find>
       <find>enem</find>
@@ -252,6 +188,11 @@
       <find>print</find>
       <find>rad</find>
       <find>crea</find>
+      <find>spla</find>
+      <find>tower</find>
+      <find>load</find>
+      <find>creat</find>
+      <find>shop</find>
     </findStrings>
     <replaceStrings>
       <replace>enemies</replace>
@@ -271,13 +212,15 @@
         <option value="$PROJECT_DIR$/button.py" />
         <option value="$PROJECT_DIR$/123].py" />
         <option value="$PROJECT_DIR$/tower ideas.txt" />
-        <option value="$PROJECT_DIR$/../test/123.py" />
         <option value="$PROJECT_DIR$/shop.py" />
         <option value="$PROJECT_DIR$/enemy.py" />
-        <option value="$PROJECT_DIR$/config.py" />
         <option value="$PROJECT_DIR$/bullet.py" />
-        <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/../test/123.py" />
         <option value="$PROJECT_DIR$/tower.py" />
+        <option value="$PROJECT_DIR$/level.txt" />
+        <option value="$PROJECT_DIR$/platform.py" />
+        <option value="$PROJECT_DIR$/config.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -308,7 +251,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -316,10 +258,16 @@
               <item name="Tower_Defence" type="b2602c69:ProjectViewProjectNode" />
               <item name="Tower_Defence" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Tower_Defence" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Tower_Defence" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,6 +291,27 @@
     </option>
   </component>
   <component name="RunManager" selected="Python.main">
+    <configuration name="123" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="Tower_Defence" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../test" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/../test/123.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="button" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="Tower_Defence" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -410,10 +379,12 @@
       <item itemvalue="Python.main" />
       <item itemvalue="Python.enemy" />
       <item itemvalue="Python.button" />
+      <item itemvalue="Python.123" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.123" />
         <item itemvalue="Python.button" />
         <item itemvalue="Python.enemy" />
       </list>
@@ -516,53 +487,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="переписанный метод moving, но в будущем нужно переписать" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/entities.py" />
-    <entry file="file://$USER_HOME$/Library/Python/3.7/lib/python/site-packages/pygame/sprite.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="167" column="8" selection-start-line="167" selection-start-column="8" selection-end-line="167" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/levels.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/upgrade.jpg" />
-    <entry file="file://$PROJECT_DIR$/assets/tower.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/enemy.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/upgrade.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/new_tower.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/60.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/58.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/tower/PNG/57.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/55.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/tower/PNG/54.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/tower/PNG/40.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/29.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/tower/PNG/27.png">
@@ -581,23 +512,6 @@
     <entry file="file://$PROJECT_DIR$/assets/monster-enemy/PNG/1/1_enemies_1_attack_001.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/../test/123.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/enemy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="22" column="29" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tower ideas.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -605,36 +519,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shop.py">
+    <entry file="file://$PROJECT_DIR$/enemy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="75" selection-start-line="21" selection-start-column="75" selection-end-line="21" selection-end-column="75" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bullet.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="74" column="40" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="270">
+          <caret line="22" column="29" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/animation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
+        <state relative-caret-position="45">
           <caret line="5" column="27" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
@@ -644,32 +538,170 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/button.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
+        <state relative-caret-position="45">
           <caret line="4" column="24" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../test/123.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="430">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+          <folding>
+            <marker date="1587805683923" expanded="true" signature="52:53" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bullet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="48" column="43" lean-forward="true" selection-start-line="48" selection-start-column="43" selection-end-line="48" selection-end-column="43" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1587538992835" expanded="true" signature="72:73" ph="..." />
-            <marker date="1587538992835" expanded="true" signature="710:750" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/towers/tower_1/4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/towers/tower_1/5.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/towers/tower_1/12.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/6.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/9.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/12.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/14.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/26.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/36.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/38.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/55.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/58.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/61.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/48.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/37.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/35.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/33.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/29.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/23.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/8.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/60.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/map-tiles/1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/map-tiles/3.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/map-tiles/4.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower/PNG/1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/towers/tower_1/2.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/tower.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/map-tiles/9.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tower.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/map-tiles/5.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/level.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/platform.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="82">
-          <caret line="60" column="52" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
+        <state relative-caret-position="117">
+          <caret line="63" column="49" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="49" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tower.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1588141411320" expanded="true" signature="1141:1150" ph="..." />
+            <marker date="1588141411320" expanded="true" signature="7983:7992" ph="..." />
           </folding>
         </state>
       </provider>

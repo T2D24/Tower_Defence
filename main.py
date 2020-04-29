@@ -5,6 +5,7 @@ from config import *
 from enemy import *
 from tower import *
 from shop import *
+from platform import  *
 
 
 # уровни и шоп
@@ -16,6 +17,7 @@ class Game(object):
         self.display.fill((255, 255, 255))
         self.clock = pygame.time.Clock()
         self.running = True
+        self.platforms = pygame.sprite.Group()
         self.background = pygame.image.load(BG)
         self.background = pygame.transform.scale(self.background, WIN_SIZE)
         self.ms = 0
@@ -55,11 +57,11 @@ class Game(object):
                     self.display.blit(V, (x1 * (WIN_SIZE[0] // 16), y1 * (WIN_SIZE[1] // 9)))
 
     def creating_towers(self):  # должен в будущем принимать координаты при нажатии
-        x = 300
-        y = 120
-        for _ in range(1):
-            self.towers.add(Tower(x, y, TOWER, 'arch'))
-            x += 1000
+        file = open('level.txt')
+        for y1, line in enumerate(file):
+            for x1, letter in enumerate(line.strip()):
+                if letter == 'T':
+                    self.platforms.add(Platform((x1 * WIN_SIZE[0] // 16, y1 * (WIN_SIZE[1] // 9)), PLATFORM))
 
         for block in self.towers:
             self.buttons.add(block.button)

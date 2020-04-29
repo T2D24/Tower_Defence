@@ -10,6 +10,7 @@ assets = os.path.join(currentDir, 'assets')
 SPAWN_RATE = 2000
 TOWER = os.path.join(assets, 'tower.png')
 SHOP = os.path.join(assets, 'shop.png')
+PLATFORM = 'assets/map-tiles/5.jpg'
 ENEMY = os.path.join(assets, 'enemy.png')
 BG = os.path.join(assets, 'bg.png')
 UPGRADE = os.path.join(assets, 'upgrade.png')
