@@ -190,8 +190,8 @@ class Game(object):
                 button.image = pygame.transform.scale(button.image, BUTTON_SIZE).convert_alpha()
 
         self.enemies.update(ms)
-        self.towers.update( self.bullets, ms, self.display)
-        self.bullets.update(ms, self.enemies)
+        self.towers.update(self.enemies, self.bullets, ms, self.display)
+        self.bullets.update(ms)
         self.create_mobs(ms)
 
         # print(self.coins)
